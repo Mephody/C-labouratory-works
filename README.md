@@ -1,5 +1,5 @@
 # C-labouratory-works
-A couple of C++ laboratory works i did 3 years ago (smth like february - may 2015).
+A couple of C++ laboratory works i did 3 years ago (smth like february - may 2015) when i was a student for the first year.
 All of this works were done in C++ Builder 6, so it may be unworkable/unreadable nowadays. Newertheless i think some people may need them to expand their knowledge in basic C++ algorithms.
 1. Approximation - simple example of how should approximation of function works;
 2. Bidirectional list - create/delete/expand bidirectional list and its parts;
