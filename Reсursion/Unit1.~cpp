@@ -1,0 +1,125 @@
+//---------------------------------------------------------------------------
+#include <conio.h>
+#include <iostream.h>
+#include <math.h>
+#include <vcl.h>
+#include <windows.h>
+#pragma hdrstop
+int n;
+char bufRus[255];
+//---------------------------------------------------------------------------
+double psqrtR(double, int);
+char cvvod();
+int ivvod();
+double psqrt();
+char* Rus (const char* text)
+{
+        CharToOem(text, bufRus);
+        return bufRus;
+}
+
+
+
+#pragma argsused
+int main(int argc, char* argv[])
+{
+ int i;
+ double s=0;
+ char a;
+ cout << Rus("Задравствуйте! Программа считает выражения вида: sqrt(1+sqrt(...+sqrt(n)) )") << endl;
+
+ for(;;)
+        {
+        s=0;
+        cout<<Rus("Введите номер: ");
+
+        n=ivvod();
+
+        s=psqrtR(s,0);
+        cout<<Rus("Рекурсивно: y(n)=")<<s<<endl;
+        cout<<Rus("Нерекурсивно: y(n)=")<<psqrt()<<endl;
+
+
+        cout<<Rus("Вы хотите выйти? y n");
+        a=cvvod();
+        if (a=='y') break;
+        cout<<endl;
+
+        cout<<Rus("Очитсить экран? y n");
+        a=cvvod();
+        if (a=='y') clrscr();
+        cout<<endl;
+        }
+
+        return 0;
+}
+double psqrtR(double s, int k)
+        {
+         s++;
+         if (s<n)
+                {
+                 k++;
+                 s=sqrt(k+psqrtR(s,k));
+                 return s;
+                }
+                else
+                        {
+                         s=sqrt(n);
+                         return s;
+                        }
+        }
+
+double psqrt()
+        {
+         double f;
+         f=sqrt(n);
+         for(int i=n-1;i>0;i--) f=sqrt(i+f);
+         return f;
+
+        }
+
+int ivvod()
+        {
+         int i;
+         char s[100];
+
+                while(true)
+                        {
+                                fflush(stdin);
+                                gets(s);
+
+                                i=0;
+                                while (i<=strlen(s)-1)
+                                        {
+                                        if ((s[i]<'0' || s[i]>'9') && (s[i]!='-'))
+                                                {
+                                                 cout<<Rus("Некорректное значение.")<<endl;
+                                                 break;
+                                                }
+                                        i++;
+                                        }
+                                if (i==strlen(s)) break;
+                        }
+
+         return atoi(s);
+        }
+
+char cvvod()
+        {
+         char a;
+         while (true)
+                        {
+                         fflush(stdin);
+                         a=getch();
+
+                         if (a!='y' && a!='n')
+                                {
+                                 cout<<Rus("Некорректное значение.")<<endl;
+                                 continue;
+                                }
+                         break;
+                        }
+         fflush(stdin);
+         return a;
+        }
+//---------------------------------------------------------------------------

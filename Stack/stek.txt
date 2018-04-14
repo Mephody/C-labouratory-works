@@ -1,0 +1,16 @@
+        t=begin;
+        int *a = new int [k];
+        for(i=1;i<=k;i++)
+                {
+                 a[i]=t->info;
+                 t=t->next;
+                }
+        t2=begin2;
+        for(i = k; i >= 1; i--)
+                {
+                 Stack *t2 = new Stack;
+
+                 t2 -> info = a[i];
+                 t2 -> next = begin2;
+                 begin2=t2;
+                }
